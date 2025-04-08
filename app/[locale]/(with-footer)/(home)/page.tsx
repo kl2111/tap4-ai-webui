@@ -36,10 +36,17 @@ export const revalidate = RevalidateOneHour;
 export default async function Page() {
   const supabase = createClient();
   const t = await getTranslations('Home');
-  const [{ data: categoryList }, { data: navigationList }] = await Promise.all([
+  const [{ data: categoryList, error: categoryError }, { data: navigationList }] = await Promise.all([
     supabase.from('navigation_category').select(),
     supabase.from('web_navigation').select().order('collection_time', { ascending: false }).limit(12),
   ]);
+
+  // 添加错误处理和日志
+  if (categoryError) {
+    console.error('获取分类列表错误:', categoryError);
+  }
+
+  console.log('获取的分类数据:', categoryList);
 
   return (
     <div className='relative w-full'>
@@ -53,7 +60,7 @@ export default async function Page() {
         </div>
         <div className='mb-10 mt-5'>
           <TagList
-            data={categoryList!.map((item) => ({
+            data={(categoryList || []).map((item) => ({
               id: String(item.id),
               name: item.name,
               href: `/category/${item.name}`,

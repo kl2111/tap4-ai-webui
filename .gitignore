@@ -36,3 +36,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 copy_github_release.sh
+node_modules/
+node_modules/
+.env.local
+.next/
