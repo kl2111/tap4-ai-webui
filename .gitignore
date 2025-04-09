@@ -1,44 +1,39 @@
-# ✅ Node.js / Next.js
+# ✅ 仅忽略不应被推送的真实本地文件
+
+# Node / Next.js 构建产物
 node_modules/
 .next/
 out/
 build/
 dist/
 
-# ✅ 本地环境变量
+# 本地环境变量（只留 .env.local 不推）
 .env
-.env.local
-.env.development.local
-.env.production.local
-.env.test.local
+.env.*
+!.env.example
 
-# ✅ Vercel 部署配置
-.vercel/
-
-# ✅ macOS 本地文件
+# macOS 系统文件
 .DS_Store
 
-# ✅ 调试 & 日志
+# 编辑器 & IDE 文件
+.vscode/
+*.code-workspace
+
+# Python 虚拟环境
+.venv/
+__pycache__/
+
+# 日志文件
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# ✅ Python 本地虚拟环境
-.venv/
-__pycache__/
-
-# ✅ 本地测试脚本目录（非生产代码）
+# 临时/调试脚本 & 数据（可根据需要保留）
 test-scripts/
-
-# ✅ 临时上传/下载数据文件（可选）
 *.csv
 *.sqlite
 *.bak
 *.data.json
 *.mock.json
 *.backup.json
-
-# ✅ Editor 文件
-.vscode/
-*.code-workspace
