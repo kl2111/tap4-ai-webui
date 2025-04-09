@@ -36,6 +36,7 @@ export const revalidate = RevalidateOneHour;
 export default async function Page() {
   const supabase = createClient();
   const t = await getTranslations('Home');
+
   const [{ data: categoryList, error: categoryError }, { data: navigationList, error: navigationError }] =
     await Promise.all([
       supabase.from('navigation_category').select(),
@@ -47,11 +48,13 @@ export default async function Page() {
   }
   console.log('获取的分类数据:', categoryList);
 
-  // ✅ 新增下面这段
   if (navigationError) {
     console.error('获取导航数据错误:', navigationError);
   }
   console.log('获取的导航数据:', navigationList);
+
+  const safeCategoryList = Array.isArray(categoryList) ? categoryList : [];
+  const safeNavigationList = Array.isArray(navigationList) ? navigationList : [];
 
   return (
     <div className='relative w-full'>
@@ -65,7 +68,7 @@ export default async function Page() {
         </div>
         <div className='mb-10 mt-5'>
           <TagList
-            data={(categoryList || []).map((item) => ({
+            data={safeCategoryList.map((item) => ({
               id: String(item.id),
               name: item.name,
               href: `/category/${item.name}`,
@@ -74,7 +77,7 @@ export default async function Page() {
         </div>
         <div className='flex flex-col gap-5'>
           <h2 className='text-center text-[18px] lg:text-[32px]'>{t('ai-navigate')}</h2>
-          <WebNavCardList dataList={navigationList!} />
+          <WebNavCardList dataList={safeNavigationList} />
           <Link
             href='/explore'
             className='mx-auto mb-5 flex w-fit items-center justify-center gap-5 rounded-[9px] border border-white p-[10px] text-sm leading-4 hover:opacity-70'

@@ -41,7 +41,5 @@ node_modules/
 .env.local
 .next/
 
-# local Python & debug
-.venv/
-test-scripts/
-*.log
+# test-s
+/test-scripts/
