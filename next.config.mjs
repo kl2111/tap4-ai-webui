@@ -4,10 +4,6 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-
-const withNextIntl = createNextIntlPlugin();
-
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
     NEXT_BASE_API: process.env.NEXT_BASE_API,
@@ -33,12 +29,11 @@ const nextConfig = {
   },
   productionBrowserSourceMaps: false,
 
-
   webpack: (config) => {
     config.resolve.alias['@'] = path.resolve(__dirname);
     return config;
   },
 };
 
-
+const withNextIntl = createNextIntlPlugin();
 export default withNextIntl(nextConfig);
