@@ -1,9 +1,3 @@
-export const siteMeta = {
-  name: 'Tap4 AI',
-  description: 'Open-source AI Tools Directory',
-  defaultLocale: 'en',
-};
-
 export const footerLinks = {
   support: [
     { id: 'chat01', href: 'https://chat4o.ai/' },
@@ -17,6 +11,8 @@ export const footerLinks = {
   info: [
     { id: 'privacy', href: '/privacy-policy' },
     { id: 'terms', href: '/terms-of-service' },
-    { id: 'contact', href: 'mailto:support@tap4.ai' },
+    { id: 'contact', href: 'mailto:asst@kailiang.life' },
   ],
 };
+
+export default footerLinks;
