@@ -36,4 +36,4 @@ test-scripts/
 *.bak
 *.data.json
 *.mock.json
-*.backup.json
+*.backup.jsontsconfig.tsbuildinfo
