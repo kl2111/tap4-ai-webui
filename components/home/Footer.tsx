@@ -53,8 +53,8 @@ export default function Footer() {
       href: 'https://flux-pro.net/',
     },
     {
-      title: t('tap4'),
-      href: 'https://tap4.ai/',
+      title: t('Virtual Counselor'),
+      href: 'https://virtualconselor.life/',
     },
     {
       title: t('tattoo'),
