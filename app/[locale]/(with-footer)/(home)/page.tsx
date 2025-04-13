@@ -37,21 +37,10 @@ export default async function Page() {
   const supabase = createClient();
   const t = await getTranslations('Home');
 
-  const [{ data: categoryList, error: categoryError }, { data: navigationList, error: navigationError }] =
-    await Promise.all([
-      supabase.from('navigation_category').select(),
-      supabase.from('web_navigation').select().order('collection_time', { ascending: false }).limit(12),
-    ]);
-
-  if (categoryError) {
-    console.error('获取分类列表错误:', categoryError);
-  }
-  console.log('获取的分类数据:', categoryList);
-
-  if (navigationError) {
-    console.error('获取导航数据错误:', navigationError);
-  }
-  console.log('获取的导航数据:', navigationList);
+  const [{ data: categoryList }, { data: navigationList }] = await Promise.all([
+    supabase.from('navigation_category').select(),
+    supabase.from('web_navigation').select().order('collection_time', { ascending: false }).limit(12),
+  ]);
 
   const safeCategoryList = Array.isArray(categoryList) ? categoryList : [];
   const safeNavigationList = Array.isArray(navigationList) ? navigationList : [];
