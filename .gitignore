@@ -37,3 +37,6 @@ test-scripts/
 *.data.json
 *.mock.json
 *.backup.jsontsconfig.tsbuildinfo
+
+# 其他
+tsconfig.tsbuildinfo
