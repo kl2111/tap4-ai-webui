@@ -43,8 +43,8 @@ export const languages = [
     label: '简体中文',
   },
   {
-    code: 'zh-TW',
-    lang: 'tw',
+    code: 'zh-Hant',
+    lang: 'Hant',
     label: '繁體中文',
   },
 ];
